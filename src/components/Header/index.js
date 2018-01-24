@@ -1,33 +1,45 @@
 import React from 'react'
 import Link from 'gatsby-link'
+import { Container, Menu } from 'semantic-ui-react';
 
-const Header = () => (
-  <div
-    style={{
-      background: 'rebeccapurple',
-      marginBottom: '1.45rem',
-    }}
-  >
-    <div
-      style={{
-        margin: '0 auto',
-        maxWidth: 960,
-        padding: '1.45rem 1.0875rem',
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: 'white',
-            textDecoration: 'none',
-          }}
+const Header = ({ history: {location: { pathname } } }) => (
+  <Menu>
+    <Container>
+      <Menu.Item
+        as={Link}
+        to='/'
+        active={pathname === '/'}
+      >
+        Austin Winegar
+      </Menu.Item>
+
+      <Menu.Menu position='right'>
+        <Menu.Item
+          as={Link}
+          to='/about'
+          active={pathname === '/about'}
         >
-          Gatsby
-        </Link>
-      </h1>
-    </div>
-  </div>
+          About
+        </Menu.Item>
+
+        <Menu.Item
+          as={Link}
+          to='/projects'
+          active={pathname === '/projects'}
+        >
+          Projects
+        </Menu.Item>
+
+        <Menu.Item
+          as={Link}
+          to='/resume'
+          active={pathname === '/resume'}
+        >
+          Resume
+        </Menu.Item>
+      </Menu.Menu>
+    </Container>
+  </Menu>
 )
 
 export default Header
